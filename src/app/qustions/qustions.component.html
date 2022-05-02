@@ -12,24 +12,34 @@
                                 {{points}} Points
                             </div>
                             <div class="col">
-                                Question 1 of 10
+                                Question {{currenIndex}} of {{AllQuestion.length}}
                             </div>
                             <div class="col">
                                Timer: 60 sec 
                             </div>
+                            <div class="col-12 mt-5">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                  </div>
+                            </div>
                         </div>
-                        <h5 class="mb-4 ">Question Goes here for Quiz</h5>
+                        
+                        <h5 class="mb-4 ">
+                            {{AllQuestion[currenIndex]?.explanation}}
+                        </h5>
                         <div class="list-group">
-                            <button type="button" class="list-group-item list-group-item-action">A second item</button>
-                            <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                            <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-                            <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button item</button>
+                            <button type="button" class="list-group-item list-group-item-action"
+                                *ngFor="let items of AllQuestion[currenIndex]?.options; let i=index" 
+                                [attr.data-index]="i"
+                            >
+                                {{items.text}}
+                            </button>
                           </div>
 
                        <div class="bottom-cotent mt-5 d-flex justify-content-between">
-                           <button class="btn btn-secondary">Previous</button>
-                           <button class="btn btn-danger">Reset</button>
-                           <button class="btn btn-secondary">Next</button>
+                           <button class="btn btn-secondary" [disabled]="currenIndex === 0" (click)="Previous()">Previous</button>
+                           <button class="btn btn-danger" (click)="reset();">Reset</button>
+                           <button class="btn btn-secondary"  (click)="next()">Next</button>
                        </div>
                     </div>
                 </div>
