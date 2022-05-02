@@ -8,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class QustionsComponent implements OnInit {
 
   constructor() { }
+  userName:string = "Singh";
+  points:number = 0;
+  
 
   ngOnInit(): void {
   }
