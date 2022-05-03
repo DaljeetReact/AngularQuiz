@@ -9,6 +9,6 @@ export class FetchdataService {
   constructor(private http: HttpClient) { }
 
   FetchAllQuestions(){
-    return this.http.get<QuestionInterFace>('http://localhost:4200/assets/questions.json');
+    return this.http.get<QuestionInterFace>('https://angular-quiz-pi.vercel.app/assets/questions.json');
   }
 }
