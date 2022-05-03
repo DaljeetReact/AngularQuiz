@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { QustionsComponent } from './qustions/qustions.component';
-import { CompleteComponent } from './complete/complete.component';
+import { ChangebgDirective } from './changebg.directive';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { CompleteComponent } from './complete/complete.component';
     HeaderComponent,
     HomeComponent,
     QustionsComponent,
-    CompleteComponent
+    ChangebgDirective
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,4 @@
-import { Component, OnInit,SimpleChanges ,OnChanges} from '@angular/core';
-import { timer } from 'rxjs';
-
+import { Component, OnInit} from '@angular/core';
 import {FetchdataService} from '../services/fetchdata.service';
 import {Question,Option} from '../models/questions.model';
 
@@ -9,25 +7,22 @@ import {Question,Option} from '../models/questions.model';
   templateUrl: './qustions.component.html',
   styleUrls: ['./qustions.component.scss']
 })
-export class QustionsComponent implements OnInit,OnChanges{
+export class QustionsComponent implements OnInit{
   userName:string = "Singh";
   points:number = 0;
   currenIndex:number = 0;
   AllQuestion:Question[] = [];
   percentage:string = "0";
-  ChangeBg:string = "white";
   subscribeTimer: any;
   interval:any;
-  timeLeft:number = 10;
+  timeLeft:number = 60;
+  totalAnswered:number = 0;
 
   constructor( private fetchdata:FetchdataService) { }
  
   ngOnInit(): void {
     this.LoadData();
-  }
-  
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    this.startTimer();
   }
 
 
@@ -44,26 +39,28 @@ export class QustionsComponent implements OnInit,OnChanges{
   reset(){
     this.currenIndex = 0;
     this.CalculatePercentage();
-    
+    this.pauseTimer();
+    this.startTimer();
+    this.points = 0;
+    this.totalAnswered=0;
   }
 
   LoadData(){
     this.fetchdata.FetchAllQuestions().subscribe(
       res=>{
         this.AllQuestion = res.questions;
-        this.startTimer();
       }
     )
   }
 
   CheckAnswer(data:Option){
+    this.totalAnswered++;
     if(data.correct){
-      this.points++;
-      this.ChangeBg = 'green';
+      this.points += 10;
     }else{
-      this.points--;
-      this.ChangeBg = 'red';
+      this.points-= 10;
     }
+    this.timeLeft= 60; // reset Timer
     setTimeout(()=>{
         this.next();
     },1000);
@@ -82,18 +79,18 @@ export class QustionsComponent implements OnInit,OnChanges{
       } else {
         this.next();
         this.points -= 10;
-        this.timeLeft = 10;
+        this.timeLeft = 60; //reset timer
       }
-      if(this.AllQuestion.length  == this.currenIndex){
+      if(this.AllQuestion.length  == this.currenIndex){ // clear interval after finish
         this.pauseTimer();
       }
     },1000)
   }
 
-
-
   pauseTimer() {
     clearInterval(this.interval);
+    this.timeLeft= 60;
   }
+
 
 }
