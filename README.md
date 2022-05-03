@@ -29,4 +29,19 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 # This used in this project 
   - Angular Router
   - Angular Bootstrap
+  - Use Directives 
+  - Timer setInterval & clearInterval
+
+
+![ScreenShot](/src/assets/app.png)
+
+![ScreenShot](/src/assets/main.png)
+
+![ScreenShot](/src/assets/complete.png)
+
+
+
+
+
+
   

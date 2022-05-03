@@ -81,7 +81,7 @@ export class QustionsComponent implements OnInit{
         this.points -= 10;
         this.timeLeft = 60; //reset timer
       }
-      if(this.AllQuestion.length  == this.currenIndex){ // clear interval after finish
+      if(this.AllQuestion.length === this.currenIndex+1){ // clear interval after finish
         this.pauseTimer();
       }
     },1000)
