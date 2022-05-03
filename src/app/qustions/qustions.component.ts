@@ -23,6 +23,7 @@ export class QustionsComponent implements OnInit{
   ngOnInit(): void {
     this.LoadData();
     this.startTimer();
+    this.userName =  localStorage.getItem('userName')??'Singh';
   }
 
 

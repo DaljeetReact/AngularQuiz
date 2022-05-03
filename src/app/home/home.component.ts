@@ -8,13 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  userName:string ='';
   constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   StartQuiz(){
+    if(this.userName.length == 0){
+      alert('Incorrect User value');
+      return;
+    }
+    localStorage.setItem('userName',this.userName);
     this.router.navigate(['/qustions']);
   }
 }

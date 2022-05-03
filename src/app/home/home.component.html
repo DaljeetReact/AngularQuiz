@@ -4,7 +4,7 @@
              <div class="card mt-5">
                  <div class="card-body">
                     <div class="card-title text-center text-primary">
-                       <img src="../../assets/quiz.jpg" class="img-responsive" alt="Quiz image" style="width:30%">
+                       <img src="../../assets/quiz.jpg"  class="img-responsive" alt="Quiz image" style="width:30%">
                     </div>
                      <div class="content">
                          <h5>Rules for Quiz</h5>
@@ -18,7 +18,7 @@
                         <div class="bottom-cotent mt-5 ">
                             <form action=" ">
                                 <div class="form-group w-50 m-auto">
-                                    <input type="text" name="name" placeholder="Enter your name" class="form-control text-center"/>
+                                    <input type="text" name="name" [(ngModel)]="userName" placeholder="Enter your name" class="form-control text-center">
                                 </div>
                                 <div class="mt-2 text-center">
                                     <button class="btn btn-primary" (click)="StartQuiz()">Start Quiz</button>
