@@ -15,7 +15,7 @@ export class QustionsComponent implements OnInit{
   percentage:string = "0";
   subscribeTimer: any;
   interval:any;
-  timeLeft:number = 60;
+  timeLeft:number = 10;
   totalAnswered:number = 0;
 
   constructor( private fetchdata:FetchdataService) { }
@@ -61,7 +61,7 @@ export class QustionsComponent implements OnInit{
     }else{
       this.points-= 10;
     }
-    this.timeLeft= 60; // reset Timer
+    this.resetTimer(); // reset Timer
     setTimeout(()=>{
         this.next();
     },1000);
@@ -80,7 +80,7 @@ export class QustionsComponent implements OnInit{
       } else {
         this.next();
         this.points -= 10;
-        this.timeLeft = 60; //reset timer
+        this.timeLeft = 10; //reset timer
       }
       if(this.AllQuestion.length === this.currenIndex+1){ // clear interval after finish
         this.pauseTimer();
@@ -90,8 +90,12 @@ export class QustionsComponent implements OnInit{
 
   pauseTimer() {
     clearInterval(this.interval);
-    this.timeLeft= 60;
+    this.timeLeft= 10;
   }
 
+  resetTimer() {
+    this.pauseTimer();
+    this.startTimer();
+  }
 
 }
