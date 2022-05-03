@@ -32,6 +32,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
   - Use Directives 
   - Timer setInterval & clearInterval
 
+Link for site [https://angular-quiz-pi.vercel.app/home](https://angular-quiz-pi.vercel.app/home)
+
 
 ![ScreenShot](/src/assets/app.png)
 
