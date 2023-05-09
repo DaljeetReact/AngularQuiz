@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Start Building..'
+                nodejs('Node-20.1.0'){
+                    sh 'yarn install'
+                }
             }
         }
         stage('Test') {
